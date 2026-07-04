@@ -2,7 +2,9 @@
 REM Email Analyzer MVP - Startup Script
 REM This script starts both the backend Flask server and frontend Vite dev server
 
-echo Starting Email Analyzer MVP...
+echo ============================================
+echo   Email Analyzer MVP - Starting Up
+echo ============================================
 echo.
 
 REM Check if Node.js is installed
@@ -23,18 +25,24 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo.
-echo Starting Backend (Flask) on http://localhost:5000...
-start "Email Analyzer Backend" cmd /k "cd backend && python -m pip install -r requirements.txt -q && python app.py"
+echo [1/3] Starting Backend (Flask) on http://localhost:5000...
+start "Email Analyzer - Backend" cmd /k "cd backend && python -m pip install -r requirements.txt -q && python app.py"
 
-timeout /t 3 /nobreak
+echo [2/3] Starting Frontend (Vite) on http://localhost:5173...
+start "Email Analyzer - Frontend" cmd /k "cd frontend && npm install -q && npm run dev"
 
-echo Starting Frontend (Vite) on http://localhost:5173...
-start "Email Analyzer Frontend" cmd /k "cd frontend && npm install -q && npm run dev"
+echo [3/3] Waiting for services to be ready...
+timeout /t 5 /nobreak >nul
+
+echo Opening browser at http://localhost:5173...
+start "" "http://localhost:5173"
 
 echo.
-echo Both services are starting...
-echo Backend: http://localhost:5000
-echo Frontend: http://localhost:5173
+echo ============================================
+echo   Both services are running!
+echo   Backend:  http://localhost:5000
+echo   Frontend: http://localhost:5173
+echo ============================================
 echo.
-echo Press Ctrl+C in each window to stop the services.
+echo Close the Backend and Frontend windows to stop the services.
+pause
