@@ -1,0 +1,13 @@
+From: PayPal Security <support@paypa1-security.xyz>
+To: user@example.com
+Reply-To: attacker@unknown-domain.xyz
+Subject: URGENT: Verify your account immediately
+Authentication-Results: mx.example.com; spf=fail smtp.mailfrom=paypa1-security.xyz; dkim=fail; dmarc=fail
+Message-ID: <test123@example.com>
+
+Dear customer,
+
+Your account will be suspended within 24 hours. Verify your account immediately by visiting:
+http://paypa1-security.xyz/login/verify
+
+Confirm your identity and password to continue.
